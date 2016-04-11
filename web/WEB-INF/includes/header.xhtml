@@ -1,0 +1,51 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      >
+    <div id ="banner" style ="width: 1000px;height: 50px;">
+        
+        
+ 
+        <div style="font-size: 10px;width:750px;float:left; text-align: left; 
+             background-color: green">
+         
+            <h:graphicImage value="resources/logo.jpeg" height="50" width="80" />
+            
+            
+        </div>
+        
+        
+        <div style="width:250px; height:35px; float:left; padding-top: 15px; background-color: green">
+            <c:if test="${userController.loggedIn}">
+                <h:panelGroup layout="block">
+                    <h:form>
+                        
+                        <h:commandLink action="update?faces-redirect=true" value= "Update Profile"/> |
+                        <h:commandLink action='#{userController.goTo("index")}' value="Logout" />
+                    </h:form>
+                </h:panelGroup>
+            </c:if>
+            <c:if test="${!userController.loggedIn}">
+                <h:panelGroup layout="block">
+                    <h:form>
+                        <h:commandLink action='#{userController.goTo("signUp")}' value="Sign Up" /> |
+                        <h:commandLink action='#{userController.goTo("login")}' value="Login" />
+                    </h:form>
+                </h:panelGroup>
+            </c:if>
+        </div>
+    </div>
+    
+      <div style="font-size: 30px;width:1000px; height:50px; float:left; text-align: left; 
+             color: blue; font-family: cursive">
+         
+          IT 353
+            
+            
+        </div>
+                                
+                    
+                       
+ 
+</html>

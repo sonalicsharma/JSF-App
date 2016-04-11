@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:f="http://java.sun.com/jsf/core">
+<head>
+    <title>Should Be Ignored</title>
+</head>
+<body>
+
+<ui:composition	template="./WEB-INF/includes/template.xhtml">
+
+        <!-- "htmlHead" part of the template will be replaced by the HTML fragment defined here -->
+	<ui:define name="htmlHead">
+		<meta name="description" content="Our Company Home Page" />
+		<title>IT 353-Welcome page</title>
+                
+	</ui:define>
+
+        <!-- "main" part of the template will be replaced by the HTML fragment defined here -->
+	<ui:define name="main">
+            <c:if test="${userController.loggedIn}">
+               
+                <div id="login" style ="padding-left: 150px;float:left;width:600px; height:400px; margin-top: 50px; border: 1px solid #000; 
+                     background-color: #CCFFFF; padding-right: 50px">
+
+                    <h3 style="color:green"><h:outputText value ="#{userController.echoMessage}"/>!</h3>
+                    
+                    <h:panelGroup layout="block">
+                        <h:form>
+                            UserID:      <h:outputText value="#{userController.user.userID}"/><br /><br/>
+                            Password:    <h:outputText value="#{userController.user.password}"/><br /><br/>
+                            First Name:  <h:outputText value="#{userController.user.firstName}"/><br /><br/>
+                            Last Name:   <h:outputText value="#{userController.user.lastName}"/><br /><br/>
+                            Email Address:<h:outputText value="#{userController.user.email}"/><br /><br/>
+                            Security Question:<h:outputText value="#{userController.user.securityQuestion}"/><br /><br/>
+                            Security Answer:<h:outputText value="#{userController.user.securityAnswer}"/><br /><br/>
+                       
+                        </h:form>
+                    </h:panelGroup>
+                
+                </div>
+            </c:if>
+                 
+	</ui:define>
+
+</ui:composition>
+</body>
+</html>

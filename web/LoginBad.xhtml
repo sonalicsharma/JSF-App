@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <head>
+        <title>Should Be Ignored</title>
+    </head>
+    <body>
+
+        <ui:composition	template="./WEB-INF/includes/template.xhtml">
+
+            <!-- "htmlHead" part of the template will be replaced by the HTML fragment defined here -->
+            <ui:define name="htmlHead">
+                <meta name="description" content="IT 353 Home Page" />
+                <title>IT 353-home page</title>
+
+            </ui:define>
+
+            <ui:define name="main">
+                <h:form>
+                    <div style="float: center; text-align: center;">
+                    <h3> You failed to authenticate 3 times. No more login attempts will be allowed!!!</h3>
+                    <br/><br/><h:graphicImage value="resources/failed.jpeg"/>
+                    </div>
+                </h:form>
+
+            </ui:define>
+
+
+        </ui:composition>
+    </body>
+</html>
+

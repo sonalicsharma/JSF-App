@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+    <head>
+        <title>Should Be Ignored</title>
+    </head>
+    <body>
+
+        <ui:composition	template="./WEB-INF/includes/template.xhtml">
+
+            <!-- "htmlHead" part of the template will be replaced by the HTML fragment defined here -->
+            <ui:define name="htmlHead">
+                <meta name="description" content="IT 353 Home Page" />
+                <title>IT 353- Login page</title>
+            </ui:define>
+
+            <!-- "main" part of the template will be replaced by the HTML fragment defined here -->
+            <ui:define name="main">
+                <center><h3 style="color:blue; font-family: cursive">Sonali Changkakoti's Login Page</h3></center>
+                
+                <div id="login" style ="width:600px; height:400px; margin-top: 50px; border: 1px solid #000; background-color: #CCFFFF; 
+                     padding-left: 70px; padding-right: 50px">
+                    
+                       <c:if test="${userController.failedAttempts=='3'}">
+                           <div style="float: center; text-align: center;">
+                                <h3>You failed to authenticate 3 times. No more login attempts will be allowed!!!</h3>
+                                <br/><br/><h:graphicImage value="resources/notAllowed.jpeg" height="200"/>
+                           </div>
+                       </c:if>
+                        
+                        <c:if test="${userController.failedAttempts!='3'}">
+                            <center><h3>Sign in here</h3></center>
+                            <h:panelGroup layout="block">   
+                                <h:form>
+                                    <h:panelGrid columns="2">
+                                         <h:outputLabel>User ID:</h:outputLabel>
+                                        <h:inputText id="userID" value="#{userController.user.userID}"/>
+                                         <h:outputLabel>Password:</h:outputLabel>
+                                        <h:inputSecret id="password" value="#{userController.user.password}" />
+                                    </h:panelGrid>
+                                    <br/><h:outputText value="#{userController.errorResponse}" style="color:#ff0000"/><br/><br/>
+                                    <center><h:commandButton value="Sign in" style="background-color: #DD0000; color: #FFFFFF;" id="loginbutton" action="#{userController.login()}" /></center>
+                                </h:form>
+                            </h:panelGroup>
+                        </c:if>
+                    
+
+                </div>
+
+            </ui:define>
+
+        </ui:composition>
+    </body>
+</html>

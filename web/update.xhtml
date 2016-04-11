@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:g="http://xmlns.jcp.org/jsf/core">
+<head>
+    <title>Should Be Ignored</title>
+</head>
+<body>
+
+<ui:composition	template="./WEB-INF/includes/template.xhtml">
+
+        <!-- "htmlHead" part of the template will be replaced by the HTML fragment defined here -->
+	<ui:define name="htmlHead">
+		<meta name="description" content="IT 353 Home Page" />
+		<title>IT 353-home page</title>
+                
+	</ui:define>
+
+        <ui:define name="main">
+            <div id="login" style ="width:600px; height:400px; margin-top: 50px; border: 1px solid #000; background-color: #CCFFFF">
+                    <div style="width:520px; height:370px; margin-top: 60px;padding-left: 35px; float:left">
+                        <h:panelGroup layout="block">
+                            <h:form>
+                                <h3><u>Update Page</u></h3>
+                                <g:event listener="#{userController.allowAccess()}" type="preRenderView" />
+                                <h:panelGrid columns="2">
+                                    <h:outputLabel>User ID:</h:outputLabel>
+                                    <h:outputText id="userID" value="#{userController.user.userID}"/>
+
+                                    <h:outputLabel>First Name:</h:outputLabel>
+                                    <h:inputText id="firstname" value="#{userController.user.firstName}"/>
+                                    
+                                    <h:outputLabel>Last Name:</h:outputLabel>
+                                    <h:inputText id="lastname" value="#{userController.user.lastName}"/>   
+                                    <h:outputLabel>Password:</h:outputLabel>
+                                    <h:inputSecret id="password" value ="#{userController.user.password}"/>
+
+                                    <h:outputLabel>Confirm Password:</h:outputLabel>
+                                    <h:inputSecret id="confirmPassword" value ="#{userController.user.confirmPassword}"/>
+
+                                    <h:outputLabel>Email:</h:outputLabel>
+                                    <h:inputText id="email" value="#{userController.user.email}" style="width:235px"/>
+
+                                    <h:outputLabel>Security Question:</h:outputLabel>
+                                    <h:inputText id="securityQuestion" value="#{userController.user.securityQuestion}" style="width:235px"/>
+
+                                    <h:outputLabel>Security Answer:</h:outputLabel>
+                                    <h:inputText id="securityAnswer" value="#{userController.user.securityAnswer}" style="width:235px"/>
+                                </h:panelGrid>
+                                <br/><h:outputText value="#{userController.errorResponse}" style="color:#ff0000"/><br/><br/>
+                                <center><h:commandButton value="Update" style="background-color: #DD0000; color: #FFFFFF;" id="loginbutton" action="#{userController.update()}" /></center>
+                            </h:form>
+                        </h:panelGroup>
+                    </div>
+                </div>
+
+                
+        </ui:define>
+            
+    
+</ui:composition>
+</body>
+</html>
+
